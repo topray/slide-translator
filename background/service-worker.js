@@ -63,17 +63,34 @@ chrome.action.onClicked.addListener(async () => {
   const stored = await chrome.storage.local.get(['popupBounds']);
   const bounds = stored.popupBounds || {};
 
-  // 새 독립 창으로 열기
-  const win = await chrome.windows.create({
+  // 새 독립 창으로 열기 (저장된 위치가 화면 밖이면 무시)
+  const createOpts = {
     url: POPUP_URL,
     type: 'popup',
     width:  bounds.width  || POPUP_DEFAULT_WIDTH,
     height: bounds.height || POPUP_DEFAULT_HEIGHT,
-    left:   bounds.left   !== undefined ? bounds.left : undefined,
-    top:    bounds.top    !== undefined ? bounds.top  : undefined,
     focused: true
-  });
-  popupWindowId = win.id;
+  };
+  if (bounds.left !== undefined && bounds.top !== undefined) {
+    createOpts.left = bounds.left;
+    createOpts.top = bounds.top;
+  }
+
+  try {
+    const win = await chrome.windows.create(createOpts);
+    popupWindowId = win.id;
+  } catch {
+    // 저장된 위치가 화면 밖일 경우 위치 없이 재시도
+    await chrome.storage.local.remove('popupBounds');
+    const win = await chrome.windows.create({
+      url: POPUP_URL,
+      type: 'popup',
+      width: POPUP_DEFAULT_WIDTH,
+      height: POPUP_DEFAULT_HEIGHT,
+      focused: true
+    });
+    popupWindowId = win.id;
+  }
 });
 
 // 창 이동/리사이즈 시 위치 저장

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>슬라이드 번역기</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-left">
+      <img src="../icons/icon48.png" alt="로고" class="logo">
+      <div class="title-group">
+        <h1 class="title" id="tabTitle">슬라이드 번역기</h1>
+        <span class="subtitle" id="tabSubtitle"></span>
+      </div>
+    </div>
+    <div class="header-actions">
+      <button id="settingsBtn" class="icon-btn" title="설정">⚙</button>
+    </div>
+  </header>
+
+  <!-- Status Bar -->
+  <div id="statusBar" class="status-bar status-idle">
+    <span id="statusText">번역 버튼을 눌러 현재 슬라이드를 번역하세요</span>
+  </div>
+
+  <!-- Not on Slides Warning -->
+  <div id="notSlidesWarning" class="warning-box hidden">
+    <div class="warning-icon">📊</div>
+    <p>Google Slides 페이지에서만 작동합니다.</p>
+    <a href="https://slides.google.com" target="_blank" class="btn-link">Google Slides 열기 →</a>
+  </div>
+
+  <!-- No API Key Warning -->
+  <div id="noApiKeyWarning" class="warning-box hidden">
+    <div class="warning-icon">🔑</div>
+    <p>Claude API 키가 설정되지 않았습니다.</p>
+    <button id="goToSettingsBtn" class="btn-primary">API 키 설정하기</button>
+  </div>
+
+  <!-- Idle State: 번역 버튼 -->
+  <div id="idleState" class="idle-state hidden">
+    <button id="translateBtn" class="btn-translate">🇰🇷 현재 슬라이드 번역하기</button>
+  </div>
+
+  <!-- Loading State -->
+  <div id="loadingState" class="loading-state hidden">
+    <div class="spinner"></div>
+    <p id="loadingMessage">Claude AI가 번역하고 있습니다...</p>
+    <div class="loading-meta">
+      <span id="loadingStage" class="loading-stage"></span>
+      <span id="loadingDetail" class="loading-detail"></span>
+    </div>
+    <span id="loadingTimer" class="loading-timer">0초</span>
+  </div>
+
+  <!-- Error State -->
+  <div id="errorState" class="error-state hidden">
+    <div class="error-icon">⚠️</div>
+    <p id="errorMessage">오류가 발생했습니다.</p>
+    <div class="error-actions">
+      <button id="retryBtn" class="btn-secondary">다시 시도</button>
+      <button id="errorSettingsBtn" class="btn-secondary">설정 열기</button>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main id="mainContent" class="main-content hidden">
+
+    <!-- 재번역 버튼 -->
+    <div class="retranslate-wrap">
+      <button id="retranslateBtn" class="btn-retranslate">↺ 다시 번역</button>
+    </div>
+
+    <!-- Original Text (Collapsible) -->
+    <section class="section">
+      <div class="section-header" id="originalToggle">
+        <span class="section-title">🔤 원본 텍스트 (영어)</span>
+        <span class="toggle-icon">▶</span>
+      </div>
+      <div id="originalContent" class="section-body collapsed">
+        <p id="originalText" class="original-text"></p>
+      </div>
+    </section>
+
+    <!-- Translation -->
+    <section class="section highlight-section">
+      <div class="section-header">
+        <span class="section-title">🇰🇷 한국어 번역</span>
+        <button class="copy-btn" data-target="translationText" title="복사">📋</button>
+      </div>
+      <div class="section-body">
+        <div id="translationText" class="content-text"></div>
+      </div>
+    </section>
+
+    <!-- Key Terms -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-title">📖 주요 용어</span>
+        <button class="copy-btn" data-target="keyTermsText" title="복사">📋</button>
+      </div>
+      <div class="section-body">
+        <div id="keyTermsText" class="content-text"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <span id="lastUpdated" class="last-updated"></span>
+    <span id="tokenCount" class="token-count"></span>
+  </footer>
+
+  <script src="popup.js"></script>
+</body>
+</html>

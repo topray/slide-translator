@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>슬라이드 번역기 - 설정</title>
+  <link rel="stylesheet" href="settings.css">
+</head>
+<body>
+  <div class="container">
+
+    <header class="page-header">
+      <div class="header-logo">
+        <img src="../icons/icon48.png" alt="로고" class="logo">
+        <div>
+          <h1>슬라이드 번역기</h1>
+          <p class="subtitle">설정</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- API Key Section -->
+    <section class="settings-section">
+      <h2 class="section-title">Claude API 키</h2>
+      <p class="help-text">
+        Anthropic Console에서 발급받은 API 키를 입력하세요.
+        API 키는 이 기기에만 안전하게 저장되며 외부로 전송되지 않습니다.
+      </p>
+      <a href="https://console.anthropic.com/account/keys" target="_blank" class="external-link">
+        🔗 API 키 발급받기 →
+      </a>
+
+      <div class="form-group">
+        <label for="apiKeyInput" class="form-label">API 키</label>
+        <div class="input-wrapper">
+          <input
+            type="password"
+            id="apiKeyInput"
+            class="form-input"
+            placeholder="sk-ant-api03-..."
+            autocomplete="off"
+            spellcheck="false"
+          >
+          <button id="toggleVisibility" class="visibility-btn" title="표시/숨기기">👁</button>
+        </div>
+      </div>
+
+      <div id="apiKeyStatus" class="status-message hidden"></div>
+
+      <div class="button-row">
+        <button id="testApiKey" class="btn-secondary">연결 테스트</button>
+        <button id="saveApiKey" class="btn-primary">저장</button>
+      </div>
+    </section>
+
+    <!-- Translation Settings -->
+    <section class="settings-section">
+      <h2 class="section-title">번역 설정</h2>
+
+      <div class="form-group">
+        <label for="modelSelect" class="form-label">Claude 모델</label>
+        <select id="modelSelect" class="form-select">
+          <option value="claude-sonnet-4-6">Claude Sonnet 4.6 (권장 - 빠르고 정확)</option>
+          <option value="claude-opus-4-6">Claude Opus 4.6 (최고 품질, 느림)</option>
+        </select>
+        <p class="field-hint">Sonnet이 번역 품질과 속도의 균형이 가장 좋습니다.</p>
+      </div>
+
+      <div class="button-row">
+        <button id="saveSettings" class="btn-primary">설정 저장</button>
+      </div>
+    </section>
+
+    <!-- Data Management -->
+    <section class="settings-section">
+      <h2 class="section-title">데이터 관리</h2>
+      <p class="help-text">번역 캐시를 초기화하면 이전에 번역된 슬라이드도 다시 API를 호출합니다.</p>
+
+      <div class="button-row">
+        <button id="clearCache" class="btn-danger-outline">번역 캐시 초기화</button>
+        <button id="clearAll" class="btn-danger">모든 데이터 삭제</button>
+      </div>
+    </section>
+
+    <!-- Version info -->
+    <footer class="page-footer">
+      <p>슬라이드 번역기 v1.0.0 · Claude API 사용</p>
+    </footer>
+
+  </div>
+
+  <!-- Toast notification -->
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="settings.js"></script>
+</body>
+</html>

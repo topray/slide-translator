@@ -1,0 +1,313 @@
+/* settings/settings.css */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', sans-serif;
+  font-size: 14px;
+  color: #374151;
+  background: #f5f6fa;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 580px;
+  margin: 0 auto;
+  padding: 24px 20px 40px;
+}
+
+/* ─── Page Header ─────────────────────────────────────────────────────────── */
+
+.page-header {
+  margin-bottom: 24px;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(66, 133, 244, 0.25);
+}
+
+.page-header h1 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: #6b7280;
+  margin-top: 1px;
+}
+
+/* ─── Settings Sections ───────────────────────────────────────────────────── */
+
+.settings-section {
+  background: white;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.section-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 10px;
+}
+
+.help-text {
+  font-size: 12.5px;
+  color: #6b7280;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.external-link {
+  display: inline-block;
+  color: #4285f4;
+  font-size: 12.5px;
+  text-decoration: none;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.external-link:hover { text-decoration: underline; }
+
+/* ─── Form Elements ───────────────────────────────────────────────────────── */
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 6px;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+}
+
+.form-input {
+  width: 100%;
+  padding: 9px 40px 9px 12px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 7px;
+  font-size: 13px;
+  font-family: 'Courier New', monospace;
+  color: #374151;
+  background: #fafafa;
+  transition: border-color 0.15s;
+  outline: none;
+}
+
+.form-input:focus {
+  border-color: #4285f4;
+  background: white;
+}
+
+.form-input::placeholder { color: #9ca3af; font-family: inherit; }
+
+.visibility-btn {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 4px;
+  border-radius: 4px;
+  opacity: 0.6;
+  transition: opacity 0.15s;
+}
+
+.visibility-btn:hover { opacity: 1; }
+
+.form-select {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 7px;
+  font-size: 13px;
+  color: #374151;
+  background: #fafafa;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.form-select:focus { border-color: #4285f4; background: white; }
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 13.5px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: #4285f4;
+}
+
+.field-hint {
+  font-size: 11.5px;
+  color: #9ca3af;
+  margin-top: 4px;
+  line-height: 1.5;
+}
+
+/* ─── Status Message ──────────────────────────────────────────────────────── */
+
+.status-message {
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 12.5px;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.status-success {
+  background: #f0fdf4;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+}
+
+.status-error {
+  background: #fff1f2;
+  color: #be123c;
+  border: 1px solid #fecdd3;
+}
+
+.status-loading {
+  background: #eff6ff;
+  color: #1d4ed8;
+  border: 1px solid #bfdbfe;
+}
+
+/* ─── Buttons ────────────────────────────────────────────────────────────── */
+
+.button-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background: #4285f4;
+  color: white;
+  border: none;
+  padding: 9px 20px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: background 0.15s;
+}
+
+.btn-primary:hover { background: #1a73e8; }
+
+.btn-secondary {
+  background: white;
+  color: #4285f4;
+  border: 1.5px solid #4285f4;
+  padding: 8px 18px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: background 0.15s;
+}
+
+.btn-secondary:hover { background: #eff6ff; }
+
+.btn-danger {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: background 0.15s;
+}
+
+.btn-danger:hover { background: #dc2626; }
+
+.btn-danger-outline {
+  background: white;
+  color: #ef4444;
+  border: 1.5px solid #ef4444;
+  padding: 7px 14px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: background 0.15s;
+}
+
+.btn-danger-outline:hover { background: #fff1f2; }
+
+/* ─── Footer ─────────────────────────────────────────────────────────────── */
+
+.page-footer {
+  text-align: center;
+  font-size: 11.5px;
+  color: #9ca3af;
+  margin-top: 8px;
+}
+
+/* ─── Toast ──────────────────────────────────────────────────────────────── */
+
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: #1f2937;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  opacity: 0;
+  transition: opacity 0.25s, transform 0.25s;
+  pointer-events: none;
+  z-index: 1000;
+  white-space: nowrap;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ─── Utilities ──────────────────────────────────────────────────────────── */
+
+.hidden { display: none !important; }
